@@ -1,0 +1,391 @@
+---
+title: "Introducing R"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Welcome to the command line!
+
+*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+
+R is probably quite different to other computer programs you've used because you control it with the command line. That means that rather than clicking on icons or menus, you need to type commands. Of course the tricky bit is knowing what to type!
+
+So let's get started on something simple. R can be used as a (massively overpowered) calculator. In the R Console below, just type in the calculation (but leave off the equals sign) and hit the Run Code button.
+
+* Type ```2 + 4``` and hit the Run Code button.
+* Now try typing the same, but put a hash symbol ```#``` first.
+
+``` {r two-plus-four, exercise=TRUE}
+
+```
+
+``` {r outcome, echo=FALSE}
+question("What was your outcome?",
+  answer("R gave the result in both cases"),
+  answer("R gave the result only when # used"),
+  answer("R gave the results only when # not used", correct = TRUE),
+  answer("R gave the result in neither case")
+)
+```
+
+## Simple calculations
+
+*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+
+This time you'll notice there's another panel on the right. You can still try out code in the **R Console** at the bottom, but this time you type your answer in the **script.R** panel at the top. You can test your code by clicking **Run Code**, and when you're happy with it click **Submit Answer**.
+
+Just be aware that you can use the following operators in R:
+
+* ```*``` ```multiply```
+* ```/``` ```divide```
+* ```^``` ```to the power (eg. 3 squared is 3^2)```
+
+###Instructions
+Fill in the following calculations in the gaps
+
+* 256 divided by 34
+* 2 to the power 4
+* The sum of 253 and 34, divided by 12
+
+``` {r simple-calculations, exercise=TRUE, exercise.lines = 9}
+# 256 divided by 34
+
+
+# 2 to the power 4
+
+
+# The sum of 253 and 34, divided by 12
+
+
+```
+
+## Introducing variables
+
+In R, you use ```<-``` to store data in variables.
+
+E.g. ```a <- 3``` assigns the value 3 to the variable 'a'
+
+The arrow points to where the value will be stored.
+
+###Intructions
+Using the instructions above assign the value 5 to variable 'b'
+
+``` {r introducing-variable, exercise=TRUE, exercise.lines = 3}
+#Assign 5 to variable b
+
+
+```
+
+
+## Scalar variables
+A variable storing a single value is called a **scalar**.
+
+Once you've stored a variable, it's clearly useful to be able to recall it later. You do this by simply typing the variable name.
+
+Eg. to find the value stored in variable ```x```, just type ```x``` and hit enter.
+
+###Instructions
+Complete the code to print the value of b
+
+``` {r scalar-variable, exercise = TRUE, exercise.lines = 6}
+# Assign 5 to variable b
+b <- 5 
+
+# Print the value of b
+
+
+```
+
+## Scalar variable types
+In addition to storing numbers, variables can also store text or logical values (True or False).
+
+When you're storing text, remember to put it in "quotes".
+
+### Instructions
+Store the word apples in variable c
+
+``` {r variable-types, exercise = TRUE, exercise.lines = 6}
+#Store apples in c
+
+
+#Print the value of c
+
+
+```
+
+## Vector variables
+Variables can hold more than one value. These are called **vectors** and you create them using ```c()``` (the 'c' stands for combine).
+
+E.g. ```d <- c(3, 7, 1)``` stores a vector 3, 7, 1 with the label ```d```
+
+### Instructions
+Store the values 2, 4, 6 and 8 in e
+
+``` {r vector-variables, exercise = T}
+# Store 2, 4, 6, 8 in e
+
+```
+## Accessing vectors
+Once you've stored a vector, you can print the whole vector by just entering it's name.
+
+However, you can also access individual values in the vector using square brackets ```[]```.
+
+E.g. ```d[2]``` would acces the second value stored in d.
+
+### Instructions
+* Print the complete vector e
+* Print the third value stored in e
+
+``` {r accessing-vectors, exercise = T, exercise.lines = 9}
+# Store 2, 4, 6, 8 in e
+e <- c(2, 4, 6, 8)
+
+#Print the whole vector e
+
+
+#Print the third value in e
+
+
+```
+
+## Introducing dataframes
+Of course, most of the data you'll come across on this course will not be just one or a few values. R can store data in tables called **dataframes**.
+
+We've entered some data about car specifications in a dataframe called ```cars```.
+
+### Instructions
+Print the full dataframe
+
+``` {r dataframes, exercise = T}
+# Display dataframe
+
+```
+
+## Dataframe columns
+Did you notice what columns were included in the ```cars``` dataframe?
+
+Print out the full dataframe in the **R console** below. Which columns does it contain?
+
+Tip: you'll notice the list of car names on the left doesn't have a column heading. That's because these are the row names, and not counted as a proper column.
+
+``` {r columns, exercise=TRUE}
+
+```
+
+### Instructions
+``` {r column-q, echo=FALSE}
+question("Possible Answers",
+  answer("mpg, cyl, wt, gear"),
+  answer("mpg, cyl, disp, hp"),
+  answer("cyl, disp, wt, gear", correct = TRUE),
+  answer("cyl, hp, wt, carb")
+)
+```
+
+## Dataframe column names
+Now you have a list of columns in the ```cars``` dataframe: mpg, cyl, disp, hp
+
+You can refer to individual columns in dataframes by their names.
+
+E.g. ```cars$mpg``` refers to the ```mpg``` column of the ```cars``` dataframe.
+
+### Instructions
+Print the ```hp``` column of the ```cars``` dataframe
+
+
+## Dataframe columns by numbers
+You can also use column numbers to access dataframe columns.
+
+Do you remember how we used square brackets to access a single element of a vector? Well you can do the same with dataframes, but since since a dataframe has 2 dimensions you use a comma to distinguish between rows and columns.
+
+The syntax is *dataframename[rownumber,columnnumber]* If you leave the rownumber space blank, it will return all the rows.
+
+Eg. ```cars[,1]``` will return the first column of ```cars```
+
+### Instructions
+Return the ```disp``` column of the ```cars``` dataframe, using the column number.
+
+Tip: If you can't remember the order of columns, print out the full dataframe in the **R console**. Remember that the row names don't count as a column.
+
+``` {r column-by-number, exercise = T}
+# Print the disp column using column number
+
+```
+
+## Introducing functions
+The real power of R lies in its **functions**.
+
+A **function** performs a particular operation on your data. They range from simple to highly complex, but they all use the same format. That is *function_name(argument)*
+
+Tip: *argument* in this context just means the input for the function.
+
+E.g. ```mean(e)``` would return the mean or average of the values in your vector ```e```
+
+### Instructions
+Calculate the mean fuel efficiency (mpg) of the ```cars```.
+
+If this seems too tricky, you can always look back through previous exercises using the arrows at the top of the page. 
+
+``` {r functions, exercise = T}
+#Calculate the mean mpg of cars
+
+```
+
+## A few more functions
+You recall how you can find the column names in a dataframe by printing the whole dataframe. Well, that's fine with a small dataframe, but not that helpful when your dataframe has thousands of rows. Here are a few helpful functions to get column names from dataframes:
+
+```names()``` returns the column names of a dataframe ```head()``` returns the column names and top few rows of a dataframe
+
+In both cases, just put the dataframe name inside the brackets.
+
+### Instructions
+Use both of these functions to return
+
+* column names of ```cars```
+* top few rows of ```cars```
+
+``` {r more-funcs, exercise = T}
+# List the column names of cars
+
+
+#Return the top few rows of cars
+
+
+```
+
+## Functions: more arguments
+You may have noticed that ```head()``` actually returned the full dataframe in that last example. That's because ```head()``` usually returns the first 10 rows and ```cars``` has only got six rows.
+
+If we just want to return the first 2 rows of a dataframe, we have to enter another argument in the function. In all functions, arguments are separated by commas. In ```head()``` we need to use the ```n =``` argument to define how many rows to return.
+
+E.g. ```head(data, n=5)``` would return the first 5 rows of ```data```
+
+### Instructions
+Return the first 2 rows of ```cars```
+
+``` {r more-args, exercise = T}
+# Return the first 2 rows of cars
+
+```
+
+## Graphs
+You can also use functions to create graphs.
+
+One of the most useful is the ```hist()``` function which draws histograms.
+
+### Instructions
+Draw a histogram of horsepower (hp) from ```cars```.
+
+``` {r graphs, exercise = T}
+# Histogram of hp
+
+```
+
+## Histrograms
+Use the **R Console** to draw that histogram of ```hp``` from ```cars``` again.
+
+Take a look at the data and you'll notice that most of the cars have a similar power. 
+``` {r histograms, exercise = T}
+# Histogram of hp
+
+```
+
+### Instructions
+``` {r histograms-q, echo=FALSE}
+question("What range of hp do most cars fall within?",
+  answer("80 - 100 hp"),
+  answer("100 - 120 hp"),
+  answer("120 - 140 hp", correct = TRUE),
+  answer("160 - 180 hp")
+)
+```
+
+## Revision exercise
+Let's see how much you can remember from this session.
+
+### Instructions
+* Store the value 3 in a variable named f
+* Store the values 2, 7, 9 and 3 in a vector named g
+* Calculate the mean of g
+
+``` {r revision, exercise = T}
+# Store 3 in f
+
+
+# Store 2, 7, 9, 3 in g
+
+
+# Calculate the mean of g
+
+
+```
+
+## Revision exercise 2
+A bit more revision...
+
+You've been given a dataframe ```people```.
+
+### Instructions
+Perform the following operations on this dataframe.
+
+* List the column names of ```people```
+* Calculate the mean height
+* Draw a histogram of ages
+
+``` {r revision-two, exercise = T}
+# List column names of people
+
+
+# Calculate mean height of people
+
+
+# Draw histogram of ages from people
+
+
+```
+
+## Topic 2
+
+### Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to limit the number of rows printed to 5:
+
+```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
+mtcars
+```
+
+```{r print-limit-hint}
+head(mtcars)
+```
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+
