@@ -1,5 +1,10 @@
 ---
 title: "Introducing R"
+knit: (function(input_file, encoding) {
+  out_dir <- '';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
